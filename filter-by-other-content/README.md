@@ -40,3 +40,6 @@ of certain excluded string!
 USAGE: ./filter_by_other_content.sh -i=FILE_TO_FILTER -f=FILTERING_FILE -o=OUTPUT [-c=COLUMN_NO_IN_FILE_TO_FILTER]
 [-t=COLUMN_NO_IN_FILTERING_FILE] [-d=DELIMITER] [-e|--exclude]
 ```
+
+# Acknowledgements
+- Tests use [bash_unit](https://github.com/pgrange/bash_unit)
