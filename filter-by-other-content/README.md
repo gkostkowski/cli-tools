@@ -10,14 +10,7 @@ contain a space).
 Note: does not work properly for exclusion, if there is more than one occurence
 of certain excluded string!
 
-# Usage
-```
-USAGE: ./filter_by_other_content.sh -i=FILE_TO_FILTER -f=FILTERING_FILE
--o=OUTPUT [-c=COLUMN_NO_IN_FILE_TO_FILTER] [-t=COLUMN_NO_IN_FILTERING_FILE]
-[-d=DELIMITER] [-e|--exclude]
-```
-
-# Help
+# Help & usage
 ```
 ./filter_by_other_content -h
 ```
