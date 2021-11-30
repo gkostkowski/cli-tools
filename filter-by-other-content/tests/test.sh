@@ -18,12 +18,12 @@ cc 2 5
 EOF
     )
     ../filter_by_other_content \
-        -i="$TEST_DATA_DIR"/file02.txt \
-        -f="$TEST_DATA_DIR"/file04.txt \
-        -c=2 \
-        -t=1 \
-        -d=' ' \
-        -o="$OUT_FILE" > /dev/null
+        -c1 2 \
+        -c2 1 \
+        -d ' ' \
+        -o "$OUT_FILE" \
+        "$TEST_DATA_DIR"/file02.txt \
+        "$TEST_DATA_DIR"/file04.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -35,12 +35,12 @@ c 6 3
 EOF
     )
     ../filter_by_other_content \
-        -i="$TEST_DATA_DIR"/file02.txt \
-        -f="$TEST_DATA_DIR"/file04.txt \
-        -c=2 \
-        -t=2 \
-        -d=' ' \
-        -o="$OUT_FILE" > /dev/null
+        -c1 2 \
+        -c2 2 \
+        -d ' ' \
+        -o "$OUT_FILE" \
+        "$TEST_DATA_DIR"/file02.txt \
+        "$TEST_DATA_DIR"/file04.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -53,12 +53,12 @@ dd 7 3
 EOF
     )
     ../filter_by_other_content \
-        -i="$TEST_DATA_DIR"/file02.txt \
-        -f="$TEST_DATA_DIR"/file04.txt \
-        -c=3 \
-        -t=1 \
-        -d=' ' \
-        -o="$OUT_FILE" > /dev/null
+        -c1 3 \
+        -c2 1 \
+        -d ' ' \
+        -o "$OUT_FILE" \
+        "$TEST_DATA_DIR"/file02.txt \
+        "$TEST_DATA_DIR"/file04.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -71,12 +71,12 @@ test_txt_match_diff_col_no_01() {
 EOF
     )
     ../filter_by_other_content \
-        -i="$TEST_DATA_DIR"/file01.txt \
-        -f="$TEST_DATA_DIR"/file04.txt \
-        -c=1 \
-        -t=1 \
-        -d=' ' \
-        -o="$OUT_FILE" > /dev/null
+        -c1 1 \
+        -c2 1 \
+        -d ' ' \
+        -o "$OUT_FILE" \
+        "$TEST_DATA_DIR"/file01.txt \
+        "$TEST_DATA_DIR"/file04.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -88,12 +88,12 @@ test_txt_match_diff_col_no_02() {
 EOF
     )
     ../filter_by_other_content \
-        -i="$TEST_DATA_DIR"/file04.txt \
-        -f="$TEST_DATA_DIR"/file01.txt \
-        -c=1 \
-        -t=1 \
-        -d=' ' \
-        -o="$OUT_FILE" > /dev/null
+        -c1 1 \
+        -c2 1 \
+        -d ' ' \
+        -o "$OUT_FILE" \
+        "$TEST_DATA_DIR"/file04.txt \
+        "$TEST_DATA_DIR"/file01.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -103,24 +103,24 @@ test_txt_match_diff_col_no_03() {
 EOF
     )
     ../filter_by_other_content \
-        -i="$TEST_DATA_DIR"/file04.txt \
-        -f="$TEST_DATA_DIR"/file01.txt \
-        -c=1 \
-        -t=3 \
-        -d=' ' \
-        -o="$OUT_FILE" > /dev/null
+        -c1 1 \
+        -c2 3 \
+        -d ' ' \
+        -o "$OUT_FILE" \
+        "$TEST_DATA_DIR"/file04.txt \
+        "$TEST_DATA_DIR"/file01.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
 test_tsv_no_match_01() {
     EXPECTED=''
     ../filter_by_other_content \
-        -i="$TEST_DATA_DIR"/file04.txt \
-        -f="$TEST_DATA_DIR"/file03.tsv \
-        -c=1 \
-        -t=2 \
-        -d=$'\t' \
-        -o="$OUT_FILE" > /dev/null
+        -c1 1 \
+        -c2 2 \
+        -d $'\t' \
+        -o "$OUT_FILE" \
+        "$TEST_DATA_DIR"/file04.txt \
+        "$TEST_DATA_DIR"/file03.tsv
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -132,24 +132,24 @@ b	3 4 3	c
 EOF
     )
     ../filter_by_other_content \
-        -i="$TEST_DATA_DIR"/file03.tsv \
-        -f="$TEST_DATA_DIR"/file01.txt \
-        -c=2 \
-        -t=1 \
-        -d=$'\t' \
-        -o="$OUT_FILE" > /dev/null
+        -c1 2 \
+        -c2 1 \
+        -d $'\t' \
+        -o "$OUT_FILE" \
+        "$TEST_DATA_DIR"/file03.tsv \
+        "$TEST_DATA_DIR"/file01.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
 test_mixed_tab_delim_01() {
     EXPECTED=''
     ../filter_by_other_content \
-    -i="$TEST_DATA_DIR"/file03.tsv \
-    -f="$TEST_DATA_DIR"/file02.txt \
-    -c=2 \
-    -t=2 \
-    -d=$'\t' \
-    -o="$OUT_FILE" > /dev/null
+    -c1 2 \
+    -c2 2 \
+    -d $'\t' \
+    -o "$OUT_FILE" \
+    "$TEST_DATA_DIR"/file03.tsv \
+    "$TEST_DATA_DIR"/file02.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -157,12 +157,12 @@ test_mixed_space_delim_02() {
     # Note: By space it understand any space character (tabulation too)
     EXPECTED=''
     ../filter_by_other_content \
-    -i="$TEST_DATA_DIR"/file03.tsv \
-    -f="$TEST_DATA_DIR"/file02.txt \
-    -c=2 \
-    -t=2 \
-    -d=' ' \
-    -o="$OUT_FILE" > /dev/null
+    -c1 2 \
+    -c2 2 \
+    -d ' ' \
+    -o "$OUT_FILE" \
+    "$TEST_DATA_DIR"/file03.tsv \
+    "$TEST_DATA_DIR"/file02.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -178,12 +178,12 @@ cc	2
 EOF
     )
     ../filter_by_other_content \
-    -i="$TEST_DATA_DIR"/file03.tsv \
-    -f="$TEST_DATA_DIR"/file02.txt \
-    -c=2 \
-    -t=2 \
-    -d=' ' \
-    -o="$OUT_FILE" > /dev/null
+    -c1 2 \
+    -c2 2 \
+    -d ' ' \
+    -o "$OUT_FILE" \
+    "$TEST_DATA_DIR"/file03.tsv \
+    "$TEST_DATA_DIR"/file02.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -199,11 +199,11 @@ cc	2
 EOF
     )
     ../filter_by_other_content \
-    -i="$TEST_DATA_DIR"/file03.tsv \
-    -f="$TEST_DATA_DIR"/file02.txt \
-    -c=2 \
-    -t=2 \
-    -o="$OUT_FILE" > /dev/null
+    -c1 2 \
+    -c2 2 \
+    -o "$OUT_FILE" \
+    "$TEST_DATA_DIR"/file03.tsv \
+    "$TEST_DATA_DIR"/file02.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
 
@@ -219,10 +219,10 @@ b	3 4 3	c
 EOF
     )
     ../filter_by_other_content \
-    -i="$TEST_DATA_DIR"/file03.tsv \
-    -f="$TEST_DATA_DIR"/file02.txt \
-    -c=2 \
-    -t=3 \
-    -o="$OUT_FILE" > /dev/null
+    -c1 2 \
+    -c2 3 \
+    -o "$OUT_FILE" \
+    "$TEST_DATA_DIR"/file03.tsv \
+    "$TEST_DATA_DIR"/file02.txt
     assert_equals "$EXPECTED" "$(<$OUT_FILE)"
 }
