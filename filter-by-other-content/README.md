@@ -1,8 +1,5 @@
 # Overview
 Script allows to filter content of a file based on values from other file.
-Better alternative for imperfect 'grep -fxF'.
-
-Script allows to filter content of a file based on values from other file.
 Better alternative for imperfect 'grep -fxF'. Script allows to exclude or include
 lines from given file. If '-c1' and '-c2' given, then you can achieve same effect
 just like in case of 'join' linux tool. If delimiter will be skipped, then awk
